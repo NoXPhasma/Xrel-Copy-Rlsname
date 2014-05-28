@@ -163,7 +163,7 @@ var filact = '';
 if (isfilter)
     filact = ' checked';
 
-if (isdomain.trim() != undefined)
+if (isdomain != undefined)
     domaindata = isdomain.replace(/#/g, "\r\n");
     domaindata = domaindata.trim();
 

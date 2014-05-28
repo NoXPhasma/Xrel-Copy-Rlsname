@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name			xrel copy rlsname
-// @namespace		NoXPhasma
-// @version			1.3.0
+// @namespace			NoXPhasma
+// @version			1.3.1
 // @source 			https://github.com/NoXPhasma/Xrel-Copy-Rlsname
 // @include			http://www.xrel.to/*
 // @require			https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
@@ -41,7 +41,9 @@ function deleteCookie(name) { setCookie(name,"",-1); }
 
 // ---------- xrel copy rlsname Script --------------------------------------------------------------------------------
 //
-$("head").append("<style type=\"text/css\" charset=\"utf-8\">"
+$.noConflict();
+
+jQuery("head").append("<style type=\"text/css\" charset=\"utf-8\">"
     +".google{"
         +"cursor:pointer;"
         +"width:11px;"
@@ -175,7 +177,7 @@ if (isfilter && isdomain.trim() != undefined)
     });
 }
 
-$('#top_bar div[style*="float:right;"]').prepend('<span class="span_padding">'
+jQuery('#top_bar div[style*="float:right;"]').prepend('<span class="span_padding">'
         +'<a id="XCR" title="Xrel Copy Releasename Options" href="#">XCR</a>'
     +'</span>'
     +'<span id="XCRoptions">'
@@ -193,101 +195,101 @@ $('#top_bar div[style*="float:right;"]').prepend('<span class="span_padding">'
     +'</span>'
 );
 
-$('#XCR').click(function() {$( "#XCRoptions" ).slideToggle( "slow");});
+jQuery('#XCR').click(function() {jQuery( "#XCRoptions" ).slideToggle( "slow");});
 
-$('#savefilter').on( "click", function()
+jQuery('#savefilter').on( "click", function()
 {
-    if ( $('#setfilter').is(':checked') )
+    if ( jQuery('#setfilter').is(':checked') )
         var filter = 1;
     else
         var filter = 0;
 
-    var domains = $("#filterdomains").val();
+    var domains = jQuery("#filterdomains").val();
     var domains = domains.replace(/\r\n/g, "#"); 
     var domains = domains.replace(/\n/g, "#");
 
     setCookie('filter',filter,365);
     setCookie('domains',domains.trim(),365);
     
-    $('#XCRoptions #saved').animate({opacity: 1.00}, 400).delay(700).animate({opacity: 0.00}, 400);
+    jQuery('#XCRoptions #saved').animate({opacity: 1.00}, 400).delay(700).animate({opacity: 0.00}, 400);
 });
 //
 // ---------- google search filter --------------------------------------------------------------------------------
 
-$('.nfo_title').attr({title: 'click to mark rlsname'});
-$('.nfo_title').click(function() {var shortSelector = $('.nfo_title .sub').selectText();});
-$('.release_title').prepend('<span class="clickme" title="click to show rlsname">R</span>');
-$('.release_title_p2p').prepend('<span class="clickme" title="click to show rlsname">R</span>');
-$('.clickme').click(function() {var y = $(this).attr('id');$('#b'+y).slideToggle(0);});
+jQuery('.nfo_title').attr({title: 'click to mark rlsname'});
+jQuery('.nfo_title').click(function() {var shortSelector = jQuery('.nfo_title .sub').selectText();});
+jQuery('.release_title').prepend('<span class="clickme" title="click to show rlsname">R</span>');
+jQuery('.release_title_p2p').prepend('<span class="clickme" title="click to show rlsname">R</span>');
+jQuery('.clickme').click(function() {var y = jQuery(this).attr('id');jQuery('#b'+y).slideToggle(0);});
 
-$('.release_title').mouseover(function()
+jQuery('.release_title').mouseover(function()
 {
 	var uid = new Date().getTime();
-	if ($(this).attr("active") == undefined)
+	if (jQuery(this).attr("active") == undefined)
     {
-		$(this).find('.clickme').attr('id', uid);
-		var b = $(this).find('.truncd').attr('id');
+		jQuery(this).find('.clickme').attr('id', uid);
+		var b = jQuery(this).find('.truncd').attr('id');
 		if (b == undefined)
         {
-			b = $(this).find('.sub_link span').html();
-            $(this).append(
+			b = jQuery(this).find('.sub_link span').html();
+            jQuery(this).append(
                 '<div id="b'+uid+'" class="shdiv">'
                     +'<span class="google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+b+'&quot;'+gfilter+'\');" title="click to search with google">G</span>'
                     +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+b+'" />'
                 +'</div>'
             );
-            $(this).attr("active", true);
+            jQuery(this).attr("active", true);
 		}
         else
         {
-			var a = $('#'+b).attr("title");
+			var a = jQuery('#'+b).attr("title");
             if(a == '')
             {
-                a = $(this).find('.sub_link span').html();
+                a = jQuery(this).find('.sub_link span').html();
             }
-            $(this).append(
+            jQuery(this).append(
                 '<div id="b'+uid+'" class="shdiv">'
                     +'<span id="b'+uid+'" class="google" title="click to search with google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+a+'&quot;'+gfilter+'\');">G</span>'
                     +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+a+'" />'
                 +'</div>'
             );
-            $(this).attr("active", true);
+            jQuery(this).attr("active", true);
 		}
 	}
 });
 
-$('.release_title_p2p').mouseover(function()
+jQuery('.release_title_p2p').mouseover(function()
 {
 	var uid = new Date().getTime();
-	if ($(this).attr("active") == undefined)
+	if (jQuery(this).attr("active") == undefined)
     {
-		$(this).find('.clickme').attr('id', uid);
-		var b = $(this).find('.truncd').attr('id');
+		jQuery(this).find('.clickme').attr('id', uid);
+		var b = jQuery(this).find('.truncd').attr('id');
 		if (b == undefined)
         {
-			b = $(this).find('.sub_link span').html();
-            $(this).append(
+			b = jQuery(this).find('.sub_link span').html();
+            jQuery(this).append(
                 '<div id="b'+uid+'" class="shdiv">'
                     +'<span class="google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+b+'&quot;'+gfilter+'\');" title="click to search with google">G</span>'
                     +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+b+'" />'
                 +'</div>'
-            );$(this).attr("active", true);
+            );jQuery(this).attr("active", true);
 		}
         else
         {
-			var a = $('#'+b).attr("title");
-            var a = $('#'+b).attr("title");
+			var a = jQuery('#'+b).attr("title");
+            var a = jQuery('#'+b).attr("title");
             if(a == '')
             {
-                a = $(this).find('.sub_link span').html();
+                a = jQuery(this).find('.sub_link span').html();
             }
-            $(this).append(
+            jQuery(this).append(
                 '<div id="b'+uid+'" class="shdiv">'
                     +'<span id="b'+uid+'" class="google" title="click to search with google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+a+'&quot;'+gfilter+'\');">G</span>'
                     +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+a+'" />'
                 +'</div>'
             );
-            $(this).attr("active", true);
+            jQuery(this).attr("active", true);
 		}
 	}
 });

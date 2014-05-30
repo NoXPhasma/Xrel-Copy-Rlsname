@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name			xrel copy rlsname
 // @namespace			NoXPhasma
-// @version			1.3.1
+// @version			1.3.2
 // @source 			https://github.com/NoXPhasma/Xrel-Copy-Rlsname
 // @include			http://www.xrel.to/*
 // @require			https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
-// @date 			2014-05-28
+// @date 			2014-05-30
 // ==/UserScript==
 
 // ---------- Cookie Functions -----------------------------------------------------------------------------------------
@@ -151,14 +151,19 @@ jQuery("head").append("<style type=\"text/css\" charset=\"utf-8\">"
         +"opacity:0;"
         +"font-size:10px;"
     +"}"
+    +"#XCR{"
+        +"cursor:pointer"
+    +"}"
 +"</style>");
 
 // ---------- google search filter --------------------------------------------------------------------------------
 //
 var isfilter = getCookie('filter');
 var isdomain = getCookie('domains');
+
 var domaindata = '';
 var filact = '';
+var gfilter = '';
 
 if (isfilter)
     filact = ' checked';
@@ -167,8 +172,7 @@ if (isdomain != undefined)
     domaindata = isdomain.replace(/#/g, "\r\n");
     domaindata = domaindata.trim();
 
-var gfilter = '';
-if (isfilter && isdomain.trim() != undefined)
+if (isfilter && isdomain != undefined)
 {
     domainar = isdomain.split("#"); 
     domainar.forEach(function(entry)
@@ -177,9 +181,7 @@ if (isfilter && isdomain.trim() != undefined)
     });
 }
 
-jQuery('#top_bar div[style*="float:right;"]').prepend('<span class="span_padding">'
-        +'<a id="XCR" title="Xrel Copy Releasename Options" href="#">XCR</a>'
-    +'</span>'
+jQuery('#top_bar div[style*="float:right;"]').prepend('<span id="XCR" class="span_padding">XCR</span>'
     +'<span id="XCRoptions">'
         +'<div>'
             +'<div class="l">'
@@ -209,7 +211,7 @@ jQuery('#savefilter').on( "click", function()
     var domains = domains.replace(/\n/g, "#");
 
     setCookie('filter',filter,365);
-    setCookie('domains',domains.trim(),365);
+    setCookie('domains',domains,365);
     
     jQuery('#XCRoptions #saved').animate({opacity: 1.00}, 400).delay(700).animate({opacity: 0.00}, 400);
 });

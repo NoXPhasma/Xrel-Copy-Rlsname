@@ -1,11 +1,15 @@
 // ==UserScript==
 // @name			xrel copy rlsname
-// @namespace			NoXPhasma
-// @version			1.3.2
+// @namespace		NoXPhasma
+// @author          NoXPhasma
+// @version			1.3.3
+// @description     This Script helps to copy RLS names from xrel.to
 // @source 			https://github.com/NoXPhasma/Xrel-Copy-Rlsname
 // @include			http://www.xrel.to/*
 // @require			https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
-// @date 			2014-05-30
+// @updateURL       https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
+// @downloadURL     https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
+// @date 			2014-06-15
 // ==/UserScript==
 
 // ---------- Cookie Functions -----------------------------------------------------------------------------------------
@@ -181,7 +185,7 @@ if (isfilter && isdomain != undefined)
     });
 }
 
-jQuery('#top_bar div[style*="float:right;"]').prepend('<span id="XCR" class="span_padding">XCR</span>'
+jQuery('#top_bar div[style*="float:right;"]').prepend('<span id="XCR" class="span_padding" title="xrel copy rlsname Options">XCR</span>'
     +'<span id="XCRoptions">'
         +'<div>'
             +'<div class="l">'

@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name			xrel copy rlsname
-// @namespace		NoXPhasma
-// @author          NoXPhasma
+// @namespace			NoXPhasma
+// @author			NoXPhasma
 // @version			1.3.3
-// @description     This Script helps to copy RLS names from xrel.to
+// @description			This Script helps to copy RLS names from xrel.to
 // @source 			https://github.com/NoXPhasma/Xrel-Copy-Rlsname
 // @include			http://www.xrel.to/*
 // @require			https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
-// @updateURL       https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
-// @downloadURL     https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
+// @updateURL			https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
+// @downloadURL			https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
 // @date 			2014-06-15
 // ==/UserScript==
 

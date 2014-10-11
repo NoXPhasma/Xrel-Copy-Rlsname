@@ -197,6 +197,11 @@ $(function()
 		}
 	});
 	
+	if (sitealign == 1)
+	{
+		$('#check_sitealign').attr('checked', true);
+	}
+	
 	$('#check_width').click(function()
 	{
 		if ($(this).is(':checked') == true)

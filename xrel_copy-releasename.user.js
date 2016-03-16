@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name			xrel copy rlsname
-// @namespace		NoXPhasma
+// @name            xrel copy rlsname
+// @namespace       NoXPhasma
 // @author          NoXPhasma
-// @version			1.3.3
+// @version         1.3.4
 // @description     This Script helps to copy RLS names from xrel.to
-// @source 			https://github.com/NoXPhasma/Xrel-Copy-Rlsname
-// @include			http://www.xrel.to/*
-// @require			https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+// @source          https://github.com/NoXPhasma/Xrel-Copy-Rlsname
+// @include         http*://www.xrel.to/*
+// @require         https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 // @updateURL       https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
 // @downloadURL     https://github.com/NoXPhasma/Xrel-Copy-Rlsname/raw/master/xrel_copy-releasename.user.js
-// @date 			2014-06-15
+// @date            2016-03-16
 // ==/UserScript==
 
 // ---------- Cookie Functions -----------------------------------------------------------------------------------------
@@ -73,6 +73,7 @@ jQuery("head").append("<style type=\"text/css\" charset=\"utf-8\">"
         +"width:688px;"
         +"border:0px;"
         +"font-size:11px;"
+        +'color:#5C5C5C;'
         +"background:none;"
         +"text-shadow:0px 0px 1px #eee;"
         +"margin-top:2px;"
@@ -230,14 +231,14 @@ jQuery('.clickme').click(function() {var y = jQuery(this).attr('id');jQuery('#b'
 
 jQuery('.release_title').mouseover(function()
 {
-	var uid = new Date().getTime();
-	if (jQuery(this).attr("active") == undefined)
+    var uid = new Date().getTime();
+    if (jQuery(this).attr("active") == undefined)
     {
-		jQuery(this).find('.clickme').attr('id', uid);
-		var b = jQuery(this).find('.truncd').attr('id');
-		if (b == undefined)
+        jQuery(this).find('.clickme').attr('id', uid);
+        var b = jQuery(this).find('.truncd').attr('id');
+        if (b == undefined)
         {
-			b = jQuery(this).find('.sub_link span').html();
+            b = jQuery(this).find('.sub_link span').html();
             jQuery(this).append(
                 '<div id="b'+uid+'" class="shdiv">'
                     +'<span class="google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+b+'&quot;'+gfilter+'\');" title="click to search with google">G</span>'
@@ -245,45 +246,9 @@ jQuery('.release_title').mouseover(function()
                 +'</div>'
             );
             jQuery(this).attr("active", true);
-		}
+        }
         else
         {
-			var a = jQuery('#'+b).attr("title");
-            if(a == '')
-            {
-                a = jQuery(this).find('.sub_link span').html();
-            }
-            jQuery(this).append(
-                '<div id="b'+uid+'" class="shdiv">'
-                    +'<span id="b'+uid+'" class="google" title="click to search with google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+a+'&quot;'+gfilter+'\');">G</span>'
-                    +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+a+'" />'
-                +'</div>'
-            );
-            jQuery(this).attr("active", true);
-		}
-	}
-});
-
-jQuery('.release_title_p2p').mouseover(function()
-{
-	var uid = new Date().getTime();
-	if (jQuery(this).attr("active") == undefined)
-    {
-		jQuery(this).find('.clickme').attr('id', uid);
-		var b = jQuery(this).find('.truncd').attr('id');
-		if (b == undefined)
-        {
-			b = jQuery(this).find('.sub_link span').html();
-            jQuery(this).append(
-                '<div id="b'+uid+'" class="shdiv">'
-                    +'<span class="google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+b+'&quot;'+gfilter+'\');" title="click to search with google">G</span>'
-                    +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+b+'" />'
-                +'</div>'
-            );jQuery(this).attr("active", true);
-		}
-        else
-        {
-			var a = jQuery('#'+b).attr("title");
             var a = jQuery('#'+b).attr("title");
             if(a == '')
             {
@@ -296,8 +261,44 @@ jQuery('.release_title_p2p').mouseover(function()
                 +'</div>'
             );
             jQuery(this).attr("active", true);
-		}
-	}
+        }
+    }
+});
+
+jQuery('.release_title_p2p').mouseover(function()
+{
+    var uid = new Date().getTime();
+    if (jQuery(this).attr("active") == undefined)
+    {
+        jQuery(this).find('.clickme').attr('id', uid);
+        var b = jQuery(this).find('.truncd').attr('id');
+        if (b == undefined)
+        {
+            b = jQuery(this).find('.sub_link span').html();
+            jQuery(this).append(
+                '<div id="b'+uid+'" class="shdiv">'
+                    +'<span class="google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+b+'&quot;'+gfilter+'\');" title="click to search with google">G</span>'
+                    +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+b+'" />'
+                +'</div>'
+            );jQuery(this).attr("active", true);
+        }
+        else
+        {
+            var a = jQuery('#'+b).attr("title");
+            var a = jQuery('#'+b).attr("title");
+            if(a == '')
+            {
+                a = jQuery(this).find('.sub_link span').html();
+            }
+            jQuery(this).append(
+                '<div id="b'+uid+'" class="shdiv">'
+                    +'<span id="b'+uid+'" class="google" title="click to search with google" onclick="window.open(\'http://www.google.de/search?q=&quot;'+a+'&quot;'+gfilter+'\');">G</span>'
+                    +'<input id="a'+uid+'" class="showrls" onmouseover="select(this.value);" value="'+a+'" />'
+                +'</div>'
+            );
+            jQuery(this).attr("active", true);
+        }
+    }
 });
 //
 // ---------- xrel copy rlsname Script --------------------------------------------------------------------------------
